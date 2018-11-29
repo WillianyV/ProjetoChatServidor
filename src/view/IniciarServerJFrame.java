@@ -204,13 +204,9 @@ public class IniciarServerJFrame extends javax.swing.JFrame {
             Servidor.setPortaServidor(Integer.parseInt(portaJTextField.getText()));
             if (iniciarServidor()) {
                 try {
-                    // WHY GOD? WHY? BAD THINGS HAPPEN WITH GOOD PEOPLE?
-                    AguardandoConexaoJFrame aguardar = new AguardandoConexaoJFrame();
-                    aguardar.show();
-                    this.dispose();
-                    //OK:
+                    MensagensClass.mensagemInformacao("Por favor aguade a conexão com o cliente", "Aguarde");
                     Servidor.setConexao(Servidor.getServer().accept());
-                    aguardar.dispose();
+                    this.dispose();
                     ChatServidorJFrame chat = new ChatServidorJFrame();
                     chat.show();
                 } catch (IOException ex) {
